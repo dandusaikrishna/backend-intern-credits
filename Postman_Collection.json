@@ -1,0 +1,493 @@
+{
+  "info": {
+    "name": "LawVriksh Credit Management API",
+    "description": "Postman collection for LawVriksh Credit Management API - Backend Intern Assignment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["health"]
+        }
+      },
+      "response": [
+        {
+          "name": "Health Check Success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["health"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"OK\",\n    \"timestamp\": \"2024-01-15T10:30:00Z\",\n    \"service\": \"LawVriksh Credit Management API\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get User Credits",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/credits/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "credits", "1"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/credits/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "credits", "1"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"data\": {\n        \"user_id\": 1,\n        \"name\": \"Admin User\",\n        \"email\": \"admin@lawvriksh.com\",\n        \"credits\": 100,\n        \"last_updated\": \"2024-01-15T10:30:00Z\"\n    }\n}"
+        },
+        {
+          "name": "User Not Found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/credits/9999",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "credits", "9999"]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": \"User not found\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Add Credits",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"amount\": 25\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/credits/1/add",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "credits", "1", "add"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 25\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/credits/1/add",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "credits", "1", "add"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Added 25 credits to user 1\",\n    \"data\": {\n        \"user_id\": 1,\n        \"credits\": 125,\n        \"last_updated\": \"2024-01-15T10:35:00Z\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Deduct Credits",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"amount\": 10\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/credits/1/deduct",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "credits", "1", "deduct"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 10\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/credits/1/deduct",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "credits", "1", "deduct"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Deducted 10 credits from user 1\",\n    \"data\": {\n        \"user_id\": 1,\n        \"credits\": 115,\n        \"last_updated\": \"2024-01-15T10:40:00Z\"\n    }\n}"
+        },
+        {
+          "name": "Insufficient Credits",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 1000\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/credits/1/deduct",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "credits", "1", "deduct"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": \"Insufficient credits\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Reset Credits",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/credits/1/reset",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "credits", "1", "reset"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/credits/1/reset",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "credits", "1", "reset"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Reset credits to zero for user 1\",\n    \"data\": {\n        \"user_id\": 1,\n        \"credits\": 0,\n        \"last_updated\": \"2024-01-15T10:45:00Z\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Schema - Add Column",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"operation\": \"add_column\",\n    \"table\": \"users\",\n    \"columns\": [\n        {\n            \"name\": \"phone_number\",\n            \"type\": \"VARCHAR(20)\",\n            \"constraints\": \"NULL\"\n        }\n    ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/schema/update",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "schema", "update"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"operation\": \"add_column\",\n    \"table\": \"users\",\n    \"columns\": [\n        {\n            \"name\": \"phone_number\",\n            \"type\": \"VARCHAR(20)\",\n            \"constraints\": \"NULL\"\n        }\n    ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/schema/update",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "schema", "update"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Schema updated successfully: add_column on table users\",\n    \"data\": {\n        \"executed_queries\": [\n            \"ALTER TABLE users ADD COLUMN phone_number VARCHAR(20) NULL\"\n        ]\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Schema - Drop Column",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"operation\": \"drop_column\",\n    \"table\": \"users\",\n    \"columns\": [\n        {\n            \"name\": \"phone_number\"\n        }\n    ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/schema/update",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "schema", "update"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"operation\": \"drop_column\",\n    \"table\": \"users\",\n    \"columns\": [\n        {\n            \"name\": \"phone_number\"\n        }\n    ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/schema/update",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "schema", "update"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Schema updated successfully: drop_column on table users\",\n    \"data\": {\n        \"executed_queries\": [\n            \"ALTER TABLE users DROP COLUMN phone_number\"\n        ]\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Schema - Add Index",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"operation\": \"add_index\",\n    \"table\": \"users\",\n    \"columns\": [\n        {\n            \"name\": \"email\"\n        }\n    ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/schema/update",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "schema", "update"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"operation\": \"add_index\",\n    \"table\": \"users\",\n    \"columns\": [\n        {\n            \"name\": \"email\"\n        }\n    ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/schema/update",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "schema", "update"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Schema updated successfully: add_index on table users\",\n    \"data\": {\n        \"executed_queries\": [\n            \"CREATE INDEX idx_users_email ON users(email)\"\n        ]\n    }\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ]
+}
